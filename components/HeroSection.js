@@ -3,7 +3,7 @@ import HeroIllustration from './HeroIllustration';
 
 export default function HeroSection() {
     return (
-        <section className="bg-[#f3f4f6] py-16">
+        <section className="bg-slate-100 py-16">
             <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between">
 
                 {/* Sol Taraf: Başlık ve Alt Metin */}
