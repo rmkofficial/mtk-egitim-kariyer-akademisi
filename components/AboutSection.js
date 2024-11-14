@@ -9,7 +9,7 @@ export default function AboutSection() {
         
         {/* Sol Taraf: İllüstrasyon */}
         <div className="md:w-1/2 mb-8 md:mb-0 flex justify-center">
-          <Image src="/illustration-about.png" alt="Eğitim İllüstrasyonu" width={500} height={500} />
+          <Image src="/illustration-about.gif" alt="Eğitim İllüstrasyonu" width={500} height={500} />
         </div>
 
         {/* Sağ Taraf: Başlık, Açıklama ve Liste */}
