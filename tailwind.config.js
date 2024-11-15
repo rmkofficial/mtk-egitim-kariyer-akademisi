@@ -10,6 +10,10 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primaryDark: "#091057",   // Ana koyu renk
+        primaryBlue: "#024CAA",   // Ana mavi renk
+        accentOrange: "#EC8305",  // Vurgulayıcı turuncu
+        lightGray: "#DBD3D3",     // Açık gri
       },
     },
   },

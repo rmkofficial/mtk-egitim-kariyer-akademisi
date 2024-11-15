@@ -18,8 +18,8 @@ export default function PopularCoursesSection() {
     <section className="bg-[#f3f4f6] py-16">
       <div className="container mx-auto px-6 text-center">
         {/* Başlık */}
-        <h2 className="text-sm text-yellow-500 font-semibold mb-2">Zirve Online</h2>
-        <h3 className="text-3xl font-bold text-gray-800 mb-12">Popüler Eğitimler</h3>
+        <h2 className="text-lg text-accentOrange font-semibold mb-2">Zirve Online</h2>
+        <h3 className="text-3xl font-bold text-primaryDark mb-12">Popüler Eğitimler</h3>
 
         {/* Kart Izgarası */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -30,7 +30,7 @@ export default function PopularCoursesSection() {
               </div>
               <div className="p-6">
                 <h4 className="text-lg font-semibold text-gray-800 mb-2">{course.title}</h4>
-                <button className="mt-4 inline-block bg-yellow-500 text-white py-2 px-4 rounded-full font-semibold hover:bg-yellow-600">
+                <button className="mt-4 inline-block bg-accentOrange text-white py-2 px-4 rounded-full font-semibold hover:bg-primaryDark">
                   İncele
                 </button>
               </div>
@@ -40,7 +40,7 @@ export default function PopularCoursesSection() {
 
         {/* Tüm Eğitimler Butonu */}
         <div className="mt-8">
-          <a href="#" className="inline-block bg-yellow-500 text-white py-3 px-6 rounded-full font-semibold hover:bg-yellow-600">
+          <a href="#" className="inline-block bg-accentOrange text-white py-3 px-6 rounded-full font-semibold hover:bg-primaryDark">
             Tüm Eğitimler
           </a>
         </div>

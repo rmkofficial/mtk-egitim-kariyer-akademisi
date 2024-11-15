@@ -6,8 +6,8 @@ export default function FeaturesSection() {
         <section className="bg-slate-200 py-16">
             <div className="container mx-auto px-6 md:px-12 text-center">
                 {/* Başlık */}
-                <h2 className="text-sm text-yellow-500 font-semibold mb-2">Online Eğitimin Tek Adresi</h2>
-                <h3 className="text-3xl font-bold text-gray-800 mb-12">MTK Egitim Kariyer Akademisi</h3>
+                <h2 className="text-lg text-accentOrange font-semibold mb-2">Online Eğitimin Tek Adresi</h2>
+                <h3 className="text-3xl font-bold text-primaryDark mb-12">MTK Egitim Kariyer Akademisi</h3>
 
                 {/* Özellik Kartları */}
                 <div className="flex flex-col md:flex-row justify-center gap-8">
