@@ -26,19 +26,19 @@ export default function AboutSection() {
               <FaStar className="text-accentOrange text-3xl" />
               <span className="text-gray-700 text-lg">Dilediğiniz yerden eğitimlere erişim sağlayın.</span>
             </li>
-            <li className="flex items-center space-x-2">
+            <li className="flex items-center space-x-2 text-left">
               <FaStar className="text-accentOrange text-3xl" />
               <span className="text-gray-700 text-lg">Sertifika ile kariyerinizde fark yaratın.</span>
             </li>
-            <li className="flex items-center space-x-2">
+            <li className="flex items-center space-x-2 text-left">
               <FaStar className="text-accentOrange text-3xl" />
               <span className="text-gray-700 text-lg">Eğitim içerikleri sürekli güncellenir.</span>
             </li>
-            <li className="flex items-center space-x-2">
+            <li className="flex items-center space-x-2 text-left">
               <FaStar className="text-accentOrange text-3xl" />
               <span className="text-gray-700 text-lg">Her seviyeye uygun kurslar mevcuttur.</span>
             </li>
-            <li className="flex items-center space-x-2">
+            <li className="flex items-center space-x-2 text-left">
               <FaStar className="text-accentOrange text-3xl" />
               <span className="text-gray-700 text-lg">Yer ve zamandan bağımsız öğrenim fırsatı.</span>
             </li>
