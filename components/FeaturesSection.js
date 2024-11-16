@@ -6,7 +6,7 @@ export default function FeaturesSection() {
     <section className="bg-slate-200 py-16">
       <div className="container mx-auto px-6 md:px-12 text-center">
         {/* Başlık */}
-        <h2 className="text-lg text-accentOrange font-semibold mb-2">Online Eğitimin Tek Adresi</h2>
+        <h2 className="text-lg text-accentOrange font-semibold mb-2">Hayallerinize Ulaşmanın Anahtarı</h2>
         <h3 className="text-3xl font-bold text-primaryDark mb-12">MTK Eğitim Kariyer Akademisi</h3>
 
         {/* Özellik Kartları */}
