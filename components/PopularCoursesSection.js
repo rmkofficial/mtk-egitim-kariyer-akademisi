@@ -15,10 +15,10 @@ const courses = [
 
 export default function PopularCoursesSection() {
   return (
-    <section className="bg-[#f3f4f6] py-16">
+    <section className="bg-slate-100 py-16">
       <div className="container mx-auto px-6 text-center">
         {/* Başlık */}
-        <h2 className="text-lg text-accentOrange font-semibold mb-2">Zirve Online</h2>
+        <h2 className="text-lg text-accentOrange font-semibold mb-2">MTK Eğitim Kariyer Akademisi</h2>
         <h3 className="text-3xl font-bold text-primaryDark mb-12">Popüler Eğitimler</h3>
 
         {/* Kart Izgarası */}
