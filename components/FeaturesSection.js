@@ -18,6 +18,7 @@ export default function FeaturesSection() {
               alt="Dijital Eğitimler"
               width={100}
               height={100}
+              priority
               className="mb-4"
             />
             <h4 className="text-lg font-semibold text-gray-800 mb-2">Dijital Eğitimler</h4>
@@ -33,6 +34,7 @@ export default function FeaturesSection() {
               alt="Sertifika Programları"
               width={100}
               height={100}
+              priority
               className="mb-4"
             />
             <h4 className="text-lg font-semibold text-gray-800 mb-2">Sertifika Programları</h4>
@@ -48,6 +50,7 @@ export default function FeaturesSection() {
               alt="Sektör Odaklı Eğitimler"
               width={100}
               height={100}
+              priority
               className="mb-4"
             />
             <h4 className="text-lg font-semibold text-gray-800 mb-2">Sektör Odaklı Eğitimler</h4>
