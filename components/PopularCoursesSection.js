@@ -1,7 +1,7 @@
 // components/PopularCoursesSection.js
 import Link from 'next/link';
 import Image from 'next/image';
-import { courses } from '../data/courses';
+import { popularCourses } from '../data/courses';
 
 export default function PopularCoursesSection() {
   return (
@@ -11,7 +11,7 @@ export default function PopularCoursesSection() {
         <h3 className="text-3xl font-bold text-primaryDark mb-12">Popüler Eğitimler</h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {courses.map((course) => (
+          {popularCourses.map((course) => (
             <div key={course.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
               <Link href={`/courses/${course.id}`}>
                 <div className="relative w-full h-64 cursor-pointer">
@@ -29,9 +29,12 @@ export default function PopularCoursesSection() {
         </div>
 
         <div className="mt-8">
-          <a href="#" className="inline-block bg-accentOrange text-white py-3 px-6 rounded-full font-semibold hover:bg-primaryDark">
+          <Link
+            href="/courses"
+            className="inline-block bg-accentOrange text-white py-3 px-6 rounded-full font-semibold hover:bg-primaryDark"
+          >
             Tüm Eğitimler
-          </a>
+          </Link>
         </div>
       </div>
     </section>
