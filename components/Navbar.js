@@ -41,25 +41,25 @@ export default function Navbar() {
         <nav className="hidden md:flex flex-grow justify-center space-x-14">
           <a
             href="#"
-            className="text-2xl font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
+            className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
           >
             Anasayfa
           </a>
           <a
-            href="#"
-            className="text-2xl font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
+            href="/about"
+            className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
           >
             Kurumsal
           </a>
           <a
             href="#"
-            className="text-2xl font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
+            className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
           >
             Eğitimler
           </a>
           <a
             href="#"
-            className="text-2xl font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
+            className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
           >
             İletişim
           </a>
@@ -114,7 +114,7 @@ export default function Navbar() {
             <a href="#" className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4">
               Anasayfa
             </a>
-            <a href="#" className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4">
+            <a href="/about" className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4">
               Kurumsal
             </a>
             <a href="#" className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4">
