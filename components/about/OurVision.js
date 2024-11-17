@@ -2,15 +2,16 @@ import Image from 'next/image';
 
 export default function OurVision() {
     return (
-        <section className="bg-slate-100 py-16">
-            <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-8">
+        <section className="bg-slate-200 py-8">
+            <div className="container mx-auto px-6 md:px-12 flex flex-col-reverse md:flex-row items-center justify-between gap-8">
                 {/* Sol: Resim */}
                 <div className="md:w-1/2">
                     <Image
-                        src="/who-we-are.gif"
-                        alt="Biz Kimiz"
+                        src="/our-vision.gif"
+                        alt="Vizyonumuz"
                         width={500}
                         height={500}
+                        className="rounded-lg"
                     />
                 </div>
                 {/* Sağ: Yazılar */}

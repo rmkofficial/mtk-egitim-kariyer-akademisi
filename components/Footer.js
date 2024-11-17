@@ -1,10 +1,11 @@
+import Link from 'next/link'; // Next.js Link bileşeni
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 
 export default function Footer() {
   return (
     <footer className="bg-primaryBlue text-white py-12">
       <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-8">
-        
+
         {/* Logo ve Kısa Açıklama */}
         <div className="col-span-1">
           <h2 className="text-2xl font-bold mb-4">MTK</h2>
@@ -17,10 +18,26 @@ export default function Footer() {
         <div>
           <h4 className="text-lg font-semibold mb-4">Hızlı Linkler</h4>
           <ul className="space-y-2">
-            <li><a href="#" className="hover:text-accentOrange transition">Anasayfa</a></li>
-            <li><a href="#" className="hover:text-accentOrange transition">Eğitimler</a></li>
-            <li><a href="#" className="hover:text-accentOrange transition">Kurumsal</a></li>
-            <li><a href="#" className="hover:text-accentOrange transition">İletişim</a></li>
+            <li>
+              <Link href="/" className="hover:text-accentOrange transition">
+                Anasayfa
+              </Link>
+            </li>
+            <li>
+              <Link href="/courses" className="hover:text-accentOrange transition">
+                Eğitimler
+              </Link>
+            </li>
+            <li>
+              <Link href="/about" className="hover:text-accentOrange transition">
+                Kurumsal
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className="hover:text-accentOrange transition">
+                İletişim
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -38,16 +55,36 @@ export default function Footer() {
         <div>
           <h4 className="text-lg font-semibold mb-4">Bizi Takip Edin</h4>
           <div className="flex space-x-4">
-            <a href="#" className="text-gray-400 hover:text-accentOrange transition">
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-accentOrange transition"
+            >
               <FaFacebookF className="text-xl" />
             </a>
-            <a href="#" className="text-gray-400 hover:text-accentOrange transition">
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-accentOrange transition"
+            >
               <FaTwitter className="text-xl" />
             </a>
-            <a href="#" className="text-gray-400 hover:text-accentOrange transition">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-accentOrange transition"
+            >
               <FaInstagram className="text-xl" />
             </a>
-            <a href="#" className="text-gray-400 hover:text-accentOrange transition">
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-accentOrange transition"
+            >
               <FaLinkedinIn className="text-xl" />
             </a>
           </div>

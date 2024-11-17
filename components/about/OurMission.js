@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function OurMission() {
   return (
-    <section className="bg-white py-16">
+    <section className="bg-slate-100 py-8">
       <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-8">
         {/* Sol: Yazılar */}
         <div className="md:w-1/2">
@@ -15,7 +15,7 @@ export default function OurMission() {
         {/* Sağ: Resim */}
         <div className="md:w-1/2">
                     <Image
-                        src="/who-we-are.gif"
+                        src="/our-mission.gif"
                         alt="Biz Kimiz"
                         width={500}
                         height={500}

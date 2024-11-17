@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import Image from 'next/image'; // Next.js Image bileşeni
+import { useState, useEffect } from "react";
+import Image from "next/image"; // Next.js Image bileşeni
+import Link from "next/link"; // Next.js Link bileşeni
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,52 +26,55 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className={`bg-white shadow-xl px-4 ${isSticky ? 'fixed top-0 left-0 w-full z-50' : 'relative'}`}>
+    <header
+      className={`bg-white shadow-xl px-4 ${
+        isSticky ? "fixed top-0 left-0 w-full z-50" : "relative"
+      }`}
+    >
       <div className="container mx-auto flex items-center justify-between">
         {/* Sol Taraf: Logo */}
         <div className="flex items-center space-x-2">
+          <Link href="/">
           <Image
             src="/logo.png" // Logo dosyasının yolu
             alt="MTK Logo"
             width={80} // Logonun genişliği
             height={80} // Logonun yüksekliği
           />
+          </Link>
         </div>
 
         {/* Orta Menü - Yalnızca Büyük Ekranlarda Görünür */}
         <nav className="hidden md:flex flex-grow justify-center space-x-14">
-          <a
-            href="#"
+          <Link
+            href="/"
             className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
           >
             Anasayfa
-          </a>
-          <a
+          </Link>
+          <Link
             href="/about"
             className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
           >
             Kurumsal
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            href="/courses"
             className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
           >
             Eğitimler
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            href="/contact"
             className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
           >
             İletişim
-          </a>
+          </Link>
         </nav>
 
         {/* Sağda Hamburger Menü - Yalnızca Küçük Ekranlarda Görünür */}
         <div className="md:hidden flex items-center">
-          <button
-            onClick={toggleMenu}
-            className="text-gray-700 focus:outline-none"
-          >
+          <button onClick={toggleMenu} className="text-gray-700 focus:outline-none">
             {/* Hamburger Icon - Açık/Kapalı Duruma Göre İkonu Değiştir */}
             {isOpen ? (
               <svg
@@ -111,18 +115,30 @@ export default function Navbar() {
       {isOpen && (
         <div className="absolute top-16 left-0 w-full bg-white shadow-md z-20">
           <nav className="flex flex-col space-y-4 p-4">
-            <a href="#" className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4">
+            <Link
+              href="/"
+              className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
+            >
               Anasayfa
-            </a>
-            <a href="/about" className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4">
+            </Link>
+            <Link
+              href="/about"
+              className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
+            >
               Kurumsal
-            </a>
-            <a href="#" className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4">
+            </Link>
+            <Link
+              href="/courses"
+              className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
+            >
               Eğitimler
-            </a>
-            <a href="#" className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4">
+            </Link>
+            <Link
+              href="/contact"
+              className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
+            >
               İletişim
-            </a>
+            </Link>
           </nav>
         </div>
       )}
