@@ -12,6 +12,7 @@ export default function OurVision() {
                         width={500}
                         height={500}
                         className="rounded-lg"
+                        priority
                     />
                 </div>
                 {/* Sağ: Yazılar */}

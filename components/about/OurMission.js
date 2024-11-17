@@ -19,6 +19,7 @@ export default function OurMission() {
                         alt="Biz Kimiz"
                         width={500}
                         height={500}
+                        priority
                     />
                 </div>
       </div>
