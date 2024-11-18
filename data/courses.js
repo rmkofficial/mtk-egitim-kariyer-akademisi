@@ -3,6 +3,7 @@ export const courses = [
   {
     id: 1,
     title: 'ANNE-BEBEK YOGASI EĞİTİCİ EĞİTİMİ',
+    slug: 'anne-bebek-yogasi-egitici-egitimi',
     image: '/background-about.jpg',
     description: {
       general: 'Anne-bebek yogası, annenin doğum sonrası fiziksel ve ruhsal iyileşmesini desteklerken, bebeğin gelişimini güçlendiren özel bir uygulamadır.',
@@ -32,7 +33,7 @@ export const courses = [
 
 // Popüler kurslar
 export const popularCourses = [
-  { id: 1, title: 'ANNE-BEBEK YOGASI EĞİTİCİ EĞİTİMİ', image: '/course1.jpg', description: 'Bu eğitim, anne ve bebek arasındaki bağı güçlendirmek için tasarlanmıştır.', price: 200 },
+  { id: 1, title: 'ANNE-BEBEK YOGASI EĞİTİCİ EĞİTİMİ', slug: 'anne-bebek-yogasi-egitici-egitimi', image: '/course1.jpg', description: 'Bu eğitim, anne ve bebek arasındaki bağı güçlendirmek için tasarlanmıştır.', price: 200 },
   { id: 2, title: 'DOĞUMA HAZIRLIK EĞİTİMİ (DOULA)', image: '/course2.jpg', description: 'Doğuma hazırlık ve doğum desteği eğitimi.', price: 250 },
   { id: 4, title: 'BEBEK SPA VE BEBEK MASAJI EĞİTİMİ', image: '/course4.jpg', description: 'Bebeklerin rahatlamasını sağlayan bir spa ve masaj eğitimi.', price: 180 },
   { id: 6, title: 'EMZİRME DANIŞMANLIĞI EĞİTİCİ EĞİTİMİ', image: '/course6.jpg', description: 'Emzirme sürecine rehberlik eden bir eğitim programı.', price: 240 },

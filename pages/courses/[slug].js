@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
 import { courses } from '../../data/courses';
+import { slugify } from '../../utils/slugify';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
@@ -9,13 +10,13 @@ import '@/app/globals.css';
 
 export default function CourseDetail() {
   const router = useRouter();
-  const { id } = router.query;
+  const { slug } = router.query;
 
-  // Gelen ID'ye göre kursu bul
-  const course = courses.find((course) => course.id === parseInt(id, 10));
+  // Gelen slug'a göre kursu bul
+  const course = courses.find((course) => slugify(course.title) === slug);
 
   if (!course) {
-    // Kurs bulunamazsa Next.js'in 404 sayfasını göster
+    // Kurs bulunamazsa 404 sayfasını göster
     return (
       <>
         <Navbar />
@@ -36,7 +37,7 @@ export default function CourseDetail() {
   return (
     <>
       <Navbar />
-      <section className='bg-slate-200'>
+      <section className="bg-slate-200">
         <div className="container mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Sol: Kurs Detayları */}
           <div className="md:col-span-3">
@@ -86,8 +87,6 @@ export default function CourseDetail() {
             )}
           </div>
 
-
-
           {/* Sağ: Sidebar */}
           <div className="md:col-span-1 bg-slate-100 p-6 rounded-lg shadow-lg">
             {/* Ücret */}
@@ -97,13 +96,12 @@ export default function CourseDetail() {
               </h2>
               <p className="text-2xl font-semibold text-accentOrange mb-4">{course.price} TL</p>
               <button
-                onClick={() => alert("Ödeme ekranı yakında hazır olacak!")}
+                onClick={() => alert('Ödeme ekranı yakında hazır olacak!')}
                 className="bg-accentOrange text-white py-2 px-4 rounded-lg font-bold hover:bg-primaryDark transition-all w-full"
               >
                 Hemen Satın Al
               </button>
             </div>
-
 
             {/* Sertifika Örnekleri */}
             <div className="mb-6">
@@ -131,7 +129,7 @@ export default function CourseDetail() {
                 {otherCourses.slice(0, 4).map((otherCourse) => (
                   <li key={otherCourse.id}>
                     <Link
-                      href={`/courses/${otherCourse.id}`}
+                      href={`/courses/${slugify(otherCourse.title)}`}
                       className="text-primaryBlue hover:text-accentOrange transition"
                     >
                       {otherCourse.title}

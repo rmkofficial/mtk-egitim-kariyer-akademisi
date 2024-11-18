@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import '@/app/globals.css';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import { slugify } from '@/utils/slugify';
 
 export default function AllCourses() {
     const [search, setSearch] = useState('');
@@ -31,75 +32,74 @@ export default function AllCourses() {
 
     return (
         <>
-        <Navbar />
-        <section className="bg-slate-100 py-16">
-            <div className="container mx-auto px-6 text-center">
-                {/* Başlık */}
-                <h2 className="text-lg text-accentOrange font-semibold mb-2">MTK Eğitim Kariyer Akademisi</h2>
-                <h3 className="text-3xl font-bold text-primaryDark mb-6">Tüm Eğitimler</h3>
+            <Navbar />
+            <section className="bg-slate-100 py-16">
+                <div className="container mx-auto px-6 text-center">
+                    {/* Başlık */}
+                    <h2 className="text-lg text-accentOrange font-semibold mb-2">MTK Eğitim Kariyer Akademisi</h2>
+                    <h3 className="text-3xl font-bold text-primaryDark mb-6">Tüm Eğitimler</h3>
 
-                {/* Arama Çubuğu */}
-                <div className="mb-8">
-                    <input
-                        type="text"
-                        placeholder="Kurs Ara..."
-                        className="w-full md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-accentOrange"
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                    />
-                </div>
+                    {/* Arama Çubuğu */}
+                    <div className="mb-8">
+                        <input
+                            type="text"
+                            placeholder="Kurs Ara..."
+                            className="w-full md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-accentOrange"
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                        />
+                    </div>
 
-                {/* Kurslar Izgarası */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {displayedCourses.length > 0 ? (
-                        displayedCourses.map((course) => (
-                            <div key={course.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
-                                <Link href={`/courses/${course.id}`}>
-                                    <div className="relative w-full h-64 cursor-pointer">
-                                        <Image
-                                            src={course.image}
-                                            alt={course.title}
-                                            layout="fill"
-                                            objectFit="cover"
-                                            className="hover:opacity-90 transition duration-300"
-                                        />
-                                    </div>
-                                    <div className="p-6">
-                                        <h4 className="text-lg font-semibold text-gray-800 mb-2">{course.title}</h4>
-                                        <p className="text-gray-600 text-sm">
-                                            Detaylar için tıklayın.
-                                        </p>
-                                    </div>
-                                </Link>
-                            </div>
-                        ))
-                    ) : (
-                        <p className="text-gray-700">Aradığınız kriterlere uygun bir kurs bulunamadı.</p>
-                    )}
-                </div>
+                    {/* Kurslar Izgarası */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {displayedCourses.length > 0 ? (
+                            displayedCourses.map((course) => (
+                                <div key={course.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
+                                    <Link href={`/courses/${slugify(course.title)}`}>
+                                        <div className="relative w-full h-64 cursor-pointer">
+                                            <Image
+                                                src={course.image}
+                                                alt={course.title}
+                                                layout="fill"
+                                                objectFit="cover"
+                                                className="hover:opacity-90 transition duration-300"
+                                            />
+                                        </div>
+                                        <div className="p-6">
+                                            <h4 className="text-lg font-semibold text-gray-800 mb-2">{course.title}</h4>
+                                            <p className="text-gray-600 text-sm">
+                                                Detaylar için tıklayın.
+                                            </p>
+                                        </div>
+                                    </Link>
+                                </div>
+                            ))
+                        ) : (
+                            <p className="text-gray-700">Aradığınız kriterlere uygun bir kurs bulunamadı.</p>
+                        )}
+                    </div>
 
-                {/* Pagination */}
-                {totalPages > 1 && (
-                    <div className="mt-8 flex justify-center items-center space-x-4">
-                        {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNumber) => (
-                            <button
-                                key={pageNumber}
-                                onClick={() => handlePageChange(pageNumber)}
-                                className={`px-4 py-2 rounded-lg ${pageNumber === currentPage
+                    {/* Pagination */}
+                    {totalPages > 1 && (
+                        <div className="mt-8 flex justify-center items-center space-x-4">
+                            {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNumber) => (
+                                <button
+                                    key={pageNumber}
+                                    onClick={() => handlePageChange(pageNumber)}
+                                    className={`px-4 py-2 rounded-lg ${pageNumber === currentPage
                                         ? 'bg-accentOrange text-white'
                                         : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                                    }`}
-                            >
-                                {pageNumber}
-                            </button>
-                        ))}
-                    </div>
-                )}
-            </div>
-        </section>
-        <Footer />
-        <WhatsAppButton />
+                                        }`}
+                                >
+                                    {pageNumber}
+                                </button>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            </section>
+            <Footer />
+            <WhatsAppButton />
         </>
-        
     );
 }

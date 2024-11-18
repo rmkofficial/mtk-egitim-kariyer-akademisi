@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { popularCourses } from '../data/courses';
+import { slugify } from '@/utils/slugify'; // Slugify fonksiyonunu ekledik
 
 export default function PopularCoursesSection() {
   return (
@@ -13,7 +14,7 @@ export default function PopularCoursesSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {popularCourses.map((course) => (
             <div key={course.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <Link href={`/courses/${course.id}`}>
+              <Link href={`/courses/${slugify(course.title)}`}>
                 <div className="relative w-full h-64 cursor-pointer">
                   <Image src={course.image} alt={course.title} layout="fill" objectFit="cover" />
                 </div>
