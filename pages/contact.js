@@ -6,6 +6,7 @@ import ContactInfo from '@/components/contact/ContactInfo';
 import ContactForm from '@/components/contact/ContactForm';
 import SocialMedia from '@/components/contact/SocialMedia';
 import '@/app/globals.css';
+import WhatsAppButton from '../components/WhatsAppButton';
 
 
 export default function Contact() {
@@ -23,6 +24,7 @@ export default function Contact() {
                 <SocialMedia />
             </main>
             <Footer />
+            <WhatsAppButton />
         </>
     );
 }

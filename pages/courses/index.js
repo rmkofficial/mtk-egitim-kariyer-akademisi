@@ -5,6 +5,7 @@ import { courses } from '@/data/courses';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import '@/app/globals.css';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 export default function AllCourses() {
     const [search, setSearch] = useState('');
@@ -97,6 +98,7 @@ export default function AllCourses() {
             </div>
         </section>
         <Footer />
+        <WhatsAppButton />
         </>
         
     );

@@ -8,8 +8,7 @@ export default function WhoWeAre() {
                 <div className="md:w-1/2">
                     <h2 className="text-3xl font-bold text-primaryDark mb-4">Biz Kimiz?</h2>
                     <p className="text-gray-700 text-lg leading-relaxed">
-                        MTK Eğitim Kariyer Akademisi olarak bireylerin kariyer gelişiminde yanlarında olmayı
-                        hedefliyoruz. Eğitim programlarımız, profesyonel beceriler kazanmanıza olanak tanır.
+                        MTK Eğitim Kariyer Akademisi olarak, bireylerin kariyer hedeflerini gerçekleştirmeleri için uluslararası standartlarda eğitimler sunuyoruz. Yüksek kalite standartlarımız ve yenilikçi yaklaşımlarımızla, modern dünyanın ihtiyaçlarına uygun programlar geliştiriyoruz. Öğrenmenin her zaman, her yerde ve herkes için ulaşılabilir olması gerektiğine inanıyoruz. Bu doğrultuda, dijital eğitim platformlarımız ve uzman iş ortaklarımızla bireylere profesyonel gelişim imkânları sunuyoruz.
                     </p>
                 </div>
                 {/* Sağ: Resim */}

@@ -5,6 +5,7 @@ import { courses } from '../../data/courses';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import '@/app/globals.css';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 export default function CourseDetail() {
   const router = useRouter();
@@ -38,6 +39,7 @@ export default function CourseDetail() {
         <p className="text-gray-700 mt-6">Burada kurs detayları olacak.</p>
       </div>
       <Footer />
+      <WhatsAppButton />
     </>
   );
 }

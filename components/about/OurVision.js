@@ -19,7 +19,7 @@ export default function OurVision() {
                 <div className="md:w-1/2">
                     <h2 className="text-3xl font-bold text-primaryDark mb-4">Vizyonumuz</h2>
                     <p className="text-gray-700 text-lg leading-relaxed">
-                        Geleceğin iş dünyasına hazırlık için en iyi eğitim içeriklerini sunarak, bireylerin kariyerlerini en üst seviyeye taşımalarını sağlamak.
+                        Eğitim alanında lider bir marka olarak, bireylerin potansiyellerini keşfetmelerine ve kariyerlerini ileriye taşımalarına rehberlik etmek en büyük hedefimizdir. Global değişim ve dönüşüm süreçlerine ayak uydurarak, iş dünyasının ihtiyaçlarına uygun ve geleceği şekillendiren eğitim içerikleri sunmayı vizyon edindik. Öğrenmeyi bir yaşam boyu süren bir yolculuk olarak gören bireylerin ilk tercihi olmayı hedefliyoruz.
                     </p>
                 </div>
             </div>

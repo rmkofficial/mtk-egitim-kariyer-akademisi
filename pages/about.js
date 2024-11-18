@@ -6,6 +6,7 @@ import WhoWeAre from '@/components/about/WhoWeAre';
 import OurVision from '@/components/about/OurVision';
 import OurMission from '@/components/about/OurMission';
 import '@/app/globals.css';
+import WhatsAppButton from '../components/WhatsAppButton';
 
 export default function About() {
   return (
@@ -29,6 +30,7 @@ export default function About() {
         <OurMission />
       </main>
       <Footer />
+      <WhatsAppButton />
     </>
   );
 }

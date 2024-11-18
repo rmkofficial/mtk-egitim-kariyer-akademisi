@@ -8,20 +8,19 @@ export default function OurMission() {
         <div className="md:w-1/2">
           <h2 className="text-3xl font-bold text-primaryDark mb-4">Misyonumuz</h2>
           <p className="text-gray-700 text-lg leading-relaxed">
-            En kaliteli ve güncel eğitim programlarıyla bireylerin kariyer hedeflerine ulaşmasına destek olmak ve
-            uluslararası geçerliliği olan sertifikalar sunmak.
+            En güncel ve etkili eğitim programlarıyla, bireylerin mesleki bilgi ve becerilerini geliştirmelerine yardımcı olmayı amaçlıyoruz. Misyonumuz; uluslararası geçerliliği olan sertifikalar sunarak bireylerin hem profesyonel hem de kişisel gelişimlerine katkıda bulunmaktır. Eğitimlerimizle, bireylerin dünya genelinde rekabet avantajı kazanmasını sağlarken, onların daha yetkin, bilgili ve donanımlı bireyler olarak topluma katkıda bulunmalarını destekliyoruz.
           </p>
         </div>
         {/* Sağ: Resim */}
         <div className="md:w-1/2">
-                    <Image
-                        src="/our-mission.gif"
-                        alt="Biz Kimiz"
-                        width={500}
-                        height={500}
-                        priority
-                    />
-                </div>
+          <Image
+            src="/our-mission.gif"
+            alt="Biz Kimiz"
+            width={500}
+            height={500}
+            priority
+          />
+        </div>
       </div>
     </section>
   );
