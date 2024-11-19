@@ -14,18 +14,19 @@ export default function PopularCoursesSection({ popularCourses }) {
           {popularCourses.length > 0 ? (
             popularCourses.map((course) => (
               <div key={course.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <Link href={`/courses/${course.attributes.slug}`}>
+                <Link href={`/courses/${course.slug}`}>
                   <div className="relative w-full h-64 cursor-pointer">
                     <Image
-                      src={`http://localhost:1337${course.attributes.image.data?.attributes.url}`}
-                      alt={course.attributes.title}
+                      src={`http://localhost:1337${course.image[0]?.url}`}
+                      alt={course.title}
                       layout="fill"
                       objectFit="cover"
+                      className="hover:opacity-90 transition duration-300"
                     />
                   </div>
                   <div className="p-6 cursor-pointer">
                     <h4 className="text-lg font-semibold text-gray-800 mb-2">
-                      {course.attributes.title}
+                    {course.title}
                     </h4>
                     <button className="mt-4 inline-block bg-accentOrange text-white py-2 px-4 rounded-full font-semibold hover:bg-primaryDark">
                       İncele

@@ -1,16 +1,21 @@
-// app/page.js
-import HeroSection from '../components/HeroSection';
-import FeaturesSection from '../components/FeaturesSection';
-import AboutSection from '../components/AboutSection';
-import PopularCoursesSection from '../components/PopularCoursesSection';
+import HeroSection from '@/components/HeroSection';
+import FeaturesSection from '@/components/FeaturesSection';
+import AboutSection from '@/components/AboutSection';
+import PopularCoursesSection from '@/components/PopularCoursesSection';
+import WhatsAppButton from '@/components/WhatsAppButton';
+import { fetchPopularCourses } from '@/utils/api';
 
-export default function Home() {
+export default async function Home() {
+  // Strapi'den popüler kursları çekiyoruz
+  const popularCourses = await fetchPopularCourses();
+
   return (
-    <div>
+    <>
       <HeroSection />
       <FeaturesSection />
       <AboutSection />
-      <PopularCoursesSection />
-    </div>
+      <PopularCoursesSection popularCourses={popularCourses} />
+      <WhatsAppButton />
+    </>
   );
 }

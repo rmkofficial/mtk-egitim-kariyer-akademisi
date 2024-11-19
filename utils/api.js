@@ -28,7 +28,7 @@ export const fetchCourseBySlug = async (slug) => {
 export const fetchPopularCourses = async () => {
     try {
         const response = await axios.get(`${API_URL}/popular-courses?populate=*`);
-        return response.data.data;
+        return response.data.data; // Strapi'den gelen veri
     } catch (error) {
         console.error('Failed to fetch popular courses:', error);
         return [];
