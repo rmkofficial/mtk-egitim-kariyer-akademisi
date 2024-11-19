@@ -2,12 +2,11 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ['localhost'], // Localhost'tan resimlere izin ver
+        domains: ['strapi-project-xi2f.onrender.com'], // Strapi'nin barındırıldığı alan adı
         remotePatterns: [
             {
-                protocol: 'http',
-                hostname: 'localhost',
-                port: '1337', // Strapi'nin çalıştığı port
+                protocol: 'https',
+                hostname: 'strapi-project-xi2f.onrender.com', // Yeni Strapi alan adı
                 pathname: '/uploads/**', // Strapi'nin yükleme yolu
             },
         ],

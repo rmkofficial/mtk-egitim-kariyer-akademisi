@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_URL = process.env.STRAPI_API_URL || 'http://localhost:1337/api';
+// Strapi'nin yeni cloud URL'sini ENV'den okur, yoksa localhost kullanır
+const API_URL = process.env.STRAPI_API_URL || 'https://strapi-project-xi2f.onrender.com/api';
 
 // Tüm kursları getirir
 export const fetchCourses = async () => {

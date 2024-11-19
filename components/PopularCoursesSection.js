@@ -17,7 +17,7 @@ export default function PopularCoursesSection({ popularCourses }) {
                 <Link href={`/courses/${course.slug}`}>
                   <div className="relative w-full h-64 cursor-pointer">
                     <Image
-                      src={`http://localhost:1337${course.image[0]?.url}`}
+                      src={`https://strapi-project-xi2f.onrender.com${course.image[0]?.url}`}
                       alt={course.title}
                       layout="fill"
                       objectFit="cover"

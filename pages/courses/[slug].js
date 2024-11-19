@@ -7,7 +7,7 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 import { fetchCourseBySlug, fetchCourses } from '@/utils/api';
 import '@/app/globals.css';
 
-export default function CourseDetail({ course }) {
+export default function CourseDetail({ course, otherCourses }) {
   const router = useRouter();
 
   // Eğer sayfa henüz slug almadıysa
@@ -37,9 +37,6 @@ export default function CourseDetail({ course }) {
     );
   }
 
-  // Dummy "Diğer Kurslar" verisi
-  const otherCourses = [];
-
   return (
     <>
       <Navbar />
@@ -50,7 +47,7 @@ export default function CourseDetail({ course }) {
             {/* Görsel */}
             {course.image?.length > 0 && (
               <Image
-                src={`http://localhost:1337${course.image[0]?.url}`}
+                src={`https://strapi-project-xi2f.onrender.com${course.image[0]?.url}`}
                 alt={course.title}
                 width={800}
                 height={450}
@@ -65,7 +62,9 @@ export default function CourseDetail({ course }) {
 
             {/* Genel Açıklama */}
             {course.description && (
-              <p className="text-gray-700 leading-relaxed mb-6">{course.description[0]?.children[0]?.text}</p>
+              <p className="text-gray-700 leading-relaxed mb-6">
+                {course.description[0]?.children[0]?.text}
+              </p>
             )}
 
             {/* Eğitim Kapsamı */}
@@ -94,7 +93,10 @@ export default function CourseDetail({ course }) {
           </div>
 
           {/* Sağ: Sidebar */}
-          <div className="md:col-span-1 bg-slate-100 p-6 rounded-lg shadow-lg">
+          <div
+            className="md:col-span-1 bg-slate-100 p-6 rounded-lg shadow-lg flex flex-col justify-between"
+            style={{ minHeight: '600px' }} // Sabit yükseklik
+          >
             {/* Ücret */}
             <div className="mb-6 bg-white p-4 rounded-lg shadow-lg">
               <h2 className="text-xl font-bold text-primaryDark mb-2 flex items-center space-x-2">
@@ -133,12 +135,14 @@ export default function CourseDetail({ course }) {
               <h2 className="text-xl font-bold text-primaryDark mb-4">Diğer Eğitimler</h2>
               <ul className="space-y-2">
                 {otherCourses.slice(0, 4).map((otherCourse) => (
-                  <li key={otherCourse.id}>
-                    <Link
-                      href={`/courses/${otherCourse.slug}`}
-                      className="text-primaryBlue hover:text-accentOrange transition"
-                    >
-                      {otherCourse.title}
+                  <li
+                    key={otherCourse.id}
+                    className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all"
+                  >
+                    <Link href={`/courses/${otherCourse.slug}`} className="flex items-center space-x-4">
+                      <span className="text-primaryBlue hover:text-accentOrange font-semibold">
+                        {otherCourse.title}
+                      </span>
                     </Link>
                   </li>
                 ))}
@@ -156,13 +160,20 @@ export default function CourseDetail({ course }) {
 // Slug'a göre kurs verisi çekiyoruz
 export async function getStaticProps({ params }) {
   const course = await fetchCourseBySlug(params.slug);
+  const allCourses = await fetchCourses();
 
   if (!course) {
     return { notFound: true };
   }
 
+  // Şu anki kursu hariç tutarak rastgele 4 diğer kursu seç
+  const otherCourses = allCourses
+    .filter((c) => c.slug !== course.slug)
+    .sort(() => 0.5 - Math.random()) // Rastgele sıralama
+    .slice(0, 4); // İlk 4 kursu al
+
   return {
-    props: { course },
+    props: { course, otherCourses },
     revalidate: 10,
   };
 }
