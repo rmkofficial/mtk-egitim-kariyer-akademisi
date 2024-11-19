@@ -1,29 +1,35 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
-import { courses } from '../../data/courses';
-import { slugify } from '../../utils/slugify';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import { fetchCourseBySlug, fetchCourses } from '@/utils/api';
 import '@/app/globals.css';
 
-export default function CourseDetail() {
+export default function CourseDetail({ course }) {
   const router = useRouter();
-  const { slug } = router.query;
 
-  // Gelen slug'a göre kursu bul
-  const course = courses.find((course) => slugify(course.title) === slug);
+  // Eğer sayfa henüz slug almadıysa
+  if (router.isFallback) {
+    return (
+      <div className="container mx-auto text-center py-16">
+        <h1 className="text-3xl font-bold text-gray-600">Yükleniyor...</h1>
+      </div>
+    );
+  }
 
   if (!course) {
-    // Kurs bulunamazsa 404 sayfasını göster
     return (
       <>
         <Navbar />
         <div className="container mx-auto text-center py-16">
           <h1 className="text-3xl font-bold text-red-500">404 - Kurs Bulunamadı</h1>
           <p className="text-gray-700 mt-4">
-            <Link href="/" className="text-blue-500 underline hover:text-blue-700">Anasayfaya</Link> dönebilirsiniz.
+            <Link href="/" className="text-blue-500 underline hover:text-blue-700">
+              Anasayfaya
+            </Link>{' '}
+            dönebilirsiniz.
           </p>
         </div>
         <Footer />
@@ -31,8 +37,8 @@ export default function CourseDetail() {
     );
   }
 
-  // Diğer kurslar (current kurs hariç)
-  const otherCourses = courses.filter((item) => item.id !== course.id);
+  // Dummy "Diğer Kurslar" verisi
+  const otherCourses = [];
 
   return (
     <>
@@ -42,9 +48,9 @@ export default function CourseDetail() {
           {/* Sol: Kurs Detayları */}
           <div className="md:col-span-3">
             {/* Görsel */}
-            {course.image && (
+            {course.image?.length > 0 && (
               <Image
-                src={course.image}
+                src={`http://localhost:1337${course.image[0]?.url}`}
                 alt={course.title}
                 width={800}
                 height={450}
@@ -58,31 +64,31 @@ export default function CourseDetail() {
             )}
 
             {/* Genel Açıklama */}
-            {course.description?.general && (
-              <p className="text-gray-700 leading-relaxed mb-6">
-                {course.description.general}
-              </p>
+            {course.description && (
+              <p className="text-gray-700 leading-relaxed mb-6">{course.description[0]?.children[0]?.text}</p>
             )}
 
             {/* Eğitim Kapsamı */}
-            {course.description?.scope && course.description.scope.length > 0 && (
+            {course.scope && course.scope.length > 0 && (
               <>
                 <h2 className="text-2xl font-bold text-primaryDark mb-4">Eğitim Kapsamında</h2>
                 <ul className="list-disc list-inside text-gray-700 leading-relaxed mb-6">
-                  {course.description.scope.map((item, index) => (
-                    <li key={index}>{item}</li>
+                  {course.scope.map((item, index) => (
+                    <li key={index}>{item.children[0]?.text}</li>
                   ))}
                 </ul>
               </>
             )}
 
             {/* Kimler Katılmalı */}
-            {course.description?.targetAudience && (
+            {course.target_audience && (
               <>
                 <h2 className="text-2xl font-bold text-primaryDark mb-4">Kimler Katılmalı?</h2>
-                <p className="text-gray-700 leading-relaxed">
-                  {course.description.targetAudience}
-                </p>
+                <ul className="list-disc list-inside text-gray-700 leading-relaxed">
+                  {course.target_audience.map((item, index) => (
+                    <li key={index}>{item.children[0]?.text}</li>
+                  ))}
+                </ul>
               </>
             )}
           </div>
@@ -129,7 +135,7 @@ export default function CourseDetail() {
                 {otherCourses.slice(0, 4).map((otherCourse) => (
                   <li key={otherCourse.id}>
                     <Link
-                      href={`/courses/${slugify(otherCourse.title)}`}
+                      href={`/courses/${otherCourse.slug}`}
                       className="text-primaryBlue hover:text-accentOrange transition"
                     >
                       {otherCourse.title}
@@ -141,9 +147,36 @@ export default function CourseDetail() {
           </div>
         </div>
       </section>
-
       <Footer />
       <WhatsAppButton />
     </>
   );
+}
+
+// Slug'a göre kurs verisi çekiyoruz
+export async function getStaticProps({ params }) {
+  const course = await fetchCourseBySlug(params.slug);
+
+  if (!course) {
+    return { notFound: true };
+  }
+
+  return {
+    props: { course },
+    revalidate: 10,
+  };
+}
+
+// Slug'ları dinamik olarak çekiyoruz
+export async function getStaticPaths() {
+  const courses = await fetchCourses();
+
+  const paths = courses.map((course) => ({
+    params: { slug: course.slug },
+  }));
+
+  return {
+    paths,
+    fallback: true, // Eğer slug yoksa fallback'e izin ver
+  };
 }
