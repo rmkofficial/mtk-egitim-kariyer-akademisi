@@ -1,14 +1,21 @@
+"use client";
+
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import PaymentModal from '@/components/PaymentModal';
 import { fetchCourseBySlug, fetchCourses } from '@/utils/api';
 import '@/app/globals.css';
 
 export default function CourseDetail({ course, otherCourses }) {
   const router = useRouter();
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleModalClose = () => setModalOpen(false);
 
   // Eğer sayfa henüz slug almadıysa
   if (router.isFallback) {
@@ -95,7 +102,7 @@ export default function CourseDetail({ course, otherCourses }) {
           {/* Sağ: Sidebar */}
           <div
             className="md:col-span-1 bg-slate-100 p-6 rounded-lg shadow-lg flex flex-col justify-between"
-            style={{ minHeight: '600px' }} // Sabit yükseklik
+            style={{ minHeight: '600px' }}
           >
             {/* Ücret */}
             <div className="mb-6 bg-white p-4 rounded-lg shadow-lg">
@@ -104,7 +111,7 @@ export default function CourseDetail({ course, otherCourses }) {
               </h2>
               <p className="text-2xl font-semibold text-accentOrange mb-4">{course.price} TL</p>
               <button
-                onClick={() => alert('Ödeme ekranı yakında hazır olacak!')}
+                onClick={() => setModalOpen(true)} // Modal'ı aç
                 className="bg-accentOrange text-white py-2 px-4 rounded-lg font-bold hover:bg-primaryDark transition-all w-full"
               >
                 Hemen Satın Al
@@ -153,6 +160,12 @@ export default function CourseDetail({ course, otherCourses }) {
       </section>
       <Footer />
       <WhatsAppButton />
+      {/* Payment Modal */}
+      <PaymentModal
+        isOpen={isModalOpen}
+        onClose={handleModalClose}
+        course={course}
+      />
     </>
   );
 }
@@ -166,11 +179,10 @@ export async function getStaticProps({ params }) {
     return { notFound: true };
   }
 
-  // Şu anki kursu hariç tutarak rastgele 4 diğer kursu seç
   const otherCourses = allCourses
     .filter((c) => c.slug !== course.slug)
-    .sort(() => 0.5 - Math.random()) // Rastgele sıralama
-    .slice(0, 4); // İlk 4 kursu al
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 4);
 
   return {
     props: { course, otherCourses },
@@ -188,6 +200,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true, // Eğer slug yoksa fallback'e izin ver
+    fallback: true,
   };
 }
