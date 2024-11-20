@@ -8,6 +8,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import PaymentModal from '@/components/PaymentModal';
+import { fetchCourseBySlug, fetchCourses } from '@/utils/api';
 import '@/app/globals.css';
 
 export default function CourseDetail({ course, otherCourses }) {
@@ -197,4 +198,32 @@ export default function CourseDetail({ course, otherCourses }) {
       )}
     </>
   );
+}
+
+// Slug'a göre kurs verisi çekiyoruz
+export async function getStaticProps({ params }) {
+  const course = await fetchCourseBySlug(params.slug);
+  const allCourses = await fetchCourses();
+  if (!course) {
+    return { notFound: true };
+  }
+  const otherCourses = allCourses
+    .filter((c) => c.slug !== course.slug)
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 4);
+  return {
+    props: { course, otherCourses },
+    revalidate: 10,
+  };
+}
+// Slug'ları dinamik olarak çekiyoruz
+export async function getStaticPaths() {
+  const courses = await fetchCourses();
+  const paths = courses.map((course) => ({
+    params: { slug: course.slug },
+  }));
+  return {
+    paths,
+    fallback: true,
+  };
 }
