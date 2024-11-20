@@ -8,14 +8,21 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import PaymentModal from '@/components/PaymentModal';
-import { fetchCourseBySlug, fetchCourses } from '@/utils/api';
 import '@/app/globals.css';
 
 export default function CourseDetail({ course, otherCourses }) {
   const router = useRouter();
   const [isModalOpen, setModalOpen] = useState(false);
+  const [isImageModalOpen, setImageModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const handleModalClose = () => setModalOpen(false);
+  const handleImageModalClose = () => setImageModalOpen(false);
+
+  const openImageModal = (image) => {
+    setSelectedImage(image);
+    setImageModalOpen(true);
+  };
 
   // Eğer sayfa henüz slug almadıysa
   if (router.isFallback) {
@@ -105,7 +112,7 @@ export default function CourseDetail({ course, otherCourses }) {
             style={{ minHeight: '600px' }}
           >
             {/* Ücret */}
-            <div className="mb-6 bg-white p-4 rounded-lg shadow-lg">
+            <div className="mb-2 bg-white p-4 rounded-lg shadow-lg">
               <h2 className="text-xl font-bold text-primaryDark mb-2 flex items-center space-x-2">
                 <span>Kurs Ücreti</span>
               </h2>
@@ -122,18 +129,20 @@ export default function CourseDetail({ course, otherCourses }) {
             <div className="mb-6">
               <h2 className="text-xl font-bold text-primaryDark mb-4">Sertifika Örnekleri</h2>
               <Image
-                src="/university-certificate.jpg"
-                alt="Üniversite Sertifikası"
+                src="/sample-certificate1.png"
+                alt="Örnek Sertika"
                 width={300}
                 height={200}
-                className="rounded-lg mb-4"
+                className="rounded-lg mb-4 cursor-pointer"
+                onClick={() => openImageModal('/sample-certificate1.png')}
               />
               <Image
-                src="/institution-certificate.jpg"
-                alt="Kurum Sertifikası"
+                src="/sample-certificate2.png"
+                alt="Örnek Sertika"
                 width={300}
                 height={200}
-                className="rounded-lg"
+                className="rounded-lg mt-8 cursor-pointer"
+                onClick={() => openImageModal('/sample-certificate2.png')}
               />
             </div>
 
@@ -166,40 +175,26 @@ export default function CourseDetail({ course, otherCourses }) {
         onClose={handleModalClose}
         course={course}
       />
+      {/* Image Modal */}
+      {isImageModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg p-6 shadow-lg max-w-lg w-full relative">
+            <button
+              onClick={handleImageModalClose}
+              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 focus:outline-none"
+            >
+              ✖
+            </button>
+            <Image
+              src={selectedImage}
+              alt="Sertifika"
+              width={600}
+              height={400}
+              className="rounded-lg"
+            />
+          </div>
+        </div>
+      )}
     </>
   );
-}
-
-// Slug'a göre kurs verisi çekiyoruz
-export async function getStaticProps({ params }) {
-  const course = await fetchCourseBySlug(params.slug);
-  const allCourses = await fetchCourses();
-
-  if (!course) {
-    return { notFound: true };
-  }
-
-  const otherCourses = allCourses
-    .filter((c) => c.slug !== course.slug)
-    .sort(() => 0.5 - Math.random())
-    .slice(0, 4);
-
-  return {
-    props: { course, otherCourses },
-    revalidate: 10,
-  };
-}
-
-// Slug'ları dinamik olarak çekiyoruz
-export async function getStaticPaths() {
-  const courses = await fetchCourses();
-
-  const paths = courses.map((course) => ({
-    params: { slug: course.slug },
-  }));
-
-  return {
-    paths,
-    fallback: true,
-  };
 }
