@@ -60,7 +60,7 @@ export default function AllCourses({ courses }) {
                                     key={course.id}
                                     className="bg-white rounded-lg shadow-lg overflow-hidden"
                                 >
-                                    <Link href={`/courses/${course.slug}`}>
+                                    <Link href={`/kurslar/${course.slug}`}>
                                         <div className="relative w-full h-64 cursor-pointer">
                                             <Image
                                                  src={`https://strapi-project-xi2f.onrender.com${course.image[0]?.url}`}
