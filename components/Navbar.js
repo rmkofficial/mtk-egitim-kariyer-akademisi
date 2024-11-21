@@ -53,19 +53,19 @@ export default function Navbar() {
             Anasayfa
           </Link>
           <Link
-            href="/about"
+            href="/kurumsal"
             className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
           >
             Kurumsal
           </Link>
           <Link
-            href="/courses"
+            href="/kurslar"
             className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
           >
             Eğitimler
           </Link>
           <Link
-            href="/contact"
+            href="/iletisim"
             className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
           >
             İletişim
@@ -122,19 +122,19 @@ export default function Navbar() {
               Anasayfa
             </Link>
             <Link
-              href="/about"
+              href="/kurumsal"
               className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
             >
               Kurumsal
             </Link>
             <Link
-              href="/courses"
+              href="/kurslar"
               className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
             >
               Eğitimler
             </Link>
             <Link
-              href="/contact"
+              href="/iletisim"
               className="text-lg font-medium text-primaryBlue hover:text-primaryDark transition duration-300 ease-in-out transform hover:scale-105 hover:underline decoration-accentOrange underline-offset-4"
             >
               İletişim

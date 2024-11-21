@@ -24,17 +24,17 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/courses" className="hover:text-accentOrange transition">
+              <Link href="/kurslar" className="hover:text-accentOrange transition">
                 Eğitimler
               </Link>
             </li>
             <li>
-              <Link href="/about" className="hover:text-accentOrange transition">
+              <Link href="/kurumsal" className="hover:text-accentOrange transition">
                 Kurumsal
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-accentOrange transition">
+              <Link href="/iletisim" className="hover:text-accentOrange transition">
                 İletişim
               </Link>
             </li>
