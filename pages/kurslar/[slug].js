@@ -110,7 +110,7 @@ export default function CourseDetail({ course, otherCourses }) {
           {/* Sağ: Sidebar */}
           <div
             className="md:col-span-1 bg-slate-100 p-6 rounded-lg shadow-lg flex flex-col justify-between"
-            style={{ minHeight: '600px' }}
+            style={{ maxHeight: '900px' }}
           >
             {/* Ücret */}
             <div className="mb-2 bg-white p-4 rounded-lg shadow-lg">
@@ -163,6 +163,10 @@ export default function CourseDetail({ course, otherCourses }) {
                     </Link>
                   </li>
                 ))}
+                <li className='text-black'>sadasdsa</li>
+                <li className='text-black'>sadasdsa</li>
+                <li className='text-black'>sadasdsa</li>
+                <li className='text-black'>sadasdsa</li>
               </ul>
             </div>
           </div>

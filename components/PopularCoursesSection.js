@@ -14,7 +14,7 @@ export default function PopularCoursesSection({ popularCourses }) {
           {popularCourses.length > 0 ? (
             popularCourses.map((course) => (
               <div key={course.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <Link href={`/courses/${course.slug}`}>
+                <Link href={`/kurslar/${course.slug}`}>
                   <div className="relative w-full h-64 cursor-pointer">
                     <Image
                       src={`https://strapi-project-xi2f.onrender.com${course.image[0]?.url}`}
@@ -26,7 +26,7 @@ export default function PopularCoursesSection({ popularCourses }) {
                   </div>
                   <div className="p-6 cursor-pointer">
                     <h4 className="text-lg font-semibold text-gray-800 mb-2">
-                    {course.title}
+                      {course.title}
                     </h4>
                     <button className="mt-4 inline-block bg-accentOrange text-white py-2 px-4 rounded-full font-semibold hover:bg-primaryDark">
                       İncele
@@ -42,7 +42,7 @@ export default function PopularCoursesSection({ popularCourses }) {
 
         <div className="mt-8">
           <Link
-            href="/courses"
+            href="/kurslar"
             className="inline-block bg-accentOrange text-white py-3 px-6 rounded-full font-semibold hover:bg-primaryDark"
           >
             Tüm Eğitimler
