@@ -204,30 +204,35 @@ export default function CourseDetail({ course, otherCourses }) {
   );
 }
 
-// Slug'a göre kurs verisi çekiyoruz
+
 export async function getStaticProps({ params }) {
-  const course = await fetchCourseBySlug(params.slug);
-  const allCourses = await fetchCourses();
+  const course = await fetchCourseBySlug(params.slug); // Slug üzerinden kurs çek
+  const allCourses = await fetchCourses(); // Tüm kursları çek
+  
   if (!course) {
-    return { notFound: true };
+    return { notFound: true }; // Eğer kurs yoksa 404
   }
+
   const otherCourses = allCourses
-    .filter((c) => c.slug !== course.slug)
+    .filter((c) => c.slug !== course.slug) // Mevcut kurs hariç diğer kursları seç
     .sort(() => 0.5 - Math.random())
-    .slice(0, 4);
+    .slice(0, 4); // İlk 4 diğer kursu seç
+
   return {
-    props: { course, otherCourses },
-    revalidate: 10,
+    props: { course, otherCourses }, // Kurs ve diğer kursları sayfaya gönder
+    revalidate: 10, // 10 saniyede bir sayfayı yeniden oluştur
   };
 }
-// Slug'ları dinamik olarak çekiyoruz
+
 export async function getStaticPaths() {
-  const courses = await fetchCourses();
+  const courses = await fetchCourses(); // Tüm kursları çek
   const paths = courses.map((course) => ({
-    params: { slug: course.slug },
+    params: { slug: course.slug }, // Slug'ları parametre olarak yollar oluştur
   }));
+
   return {
-    paths,
-    fallback: true,
+    paths, // Dinamik yollar
+    fallback: true, // Yollar bulunamazsa fallback modunu etkinleştir
   };
 }
+
