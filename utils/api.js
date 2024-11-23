@@ -42,14 +42,18 @@ export const fetchPopularCourses = async () => {
 
 export const createOrder = async (orderData) => {
     try {
-      const response = await axios.post(`${API_URL}/orders`, {
-        data: orderData,
-        withCredentials: false,
-      });
+      const response = await axios.post(
+        `${API_URL}/orders`,
+        { data: orderData },
+        {
+          withCredentials: false,
+        }
+      );
       return response.data;
     } catch (error) {
-      console.error("API Hatası:", error.response.data);
-      throw error;
-    }
+      console.error("API Hatası:", error.response?.data || error.message);
+      throw error;
+    }
   };
+  
 
