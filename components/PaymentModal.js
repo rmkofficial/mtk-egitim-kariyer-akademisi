@@ -15,14 +15,14 @@ export default function PaymentModal({ isOpen, onClose, course }) {
   const handlePayment = async () => {
     setLoading(true);
     setError(null);
-  
+
     // Boş alanları kontrol et
     if (!name || !email || !phone || !tc || !dob) {
       setError("Lütfen tüm alanları doldurun.");
       setLoading(false);
       return;
     }
-  
+
     try {
       const orderData = {
         userName: name,          // "userName" backend'in beklediği isim
@@ -33,11 +33,11 @@ export default function PaymentModal({ isOpen, onClose, course }) {
         course: course.slug,     // Backend kurs slug'ı bekliyor
         paymentId: "abc12345xyv" // Test için statik bir ödeme ID'si
       };
-  
+
       console.log("Gönderilen veri:", orderData);
-  
+
       const response = await createOrder(orderData);
-  
+
       console.log("Sipariş oluşturuldu:", response);
       alert("Siparişiniz başarıyla alındı!");
       onClose();
@@ -48,13 +48,18 @@ export default function PaymentModal({ isOpen, onClose, course }) {
       setLoading(false);
     }
   };
-  
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg p-6 shadow-lg max-w-md w-full relative">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+      onClick={onClose} // Modal dışına tıklanınca kapatma
+    >
+      <div
+        className="bg-white rounded-lg p-6 shadow-lg max-w-md w-full relative"
+        onClick={(e) => e.stopPropagation()} // Modal içeriğine tıklamayı durdur
+      >
         <button
           onClick={onClose}
           className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 focus:outline-none"
