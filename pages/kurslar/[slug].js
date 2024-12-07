@@ -151,22 +151,18 @@ export default function CourseDetail({ course, otherCourses }) {
             <div>
               <h2 className="text-xl font-bold text-primaryDark mb-4">Diğer Eğitimler</h2>
               <ul className="space-y-2">
-                {otherCourses.slice(0, 4).map((otherCourse) => (
+                {otherCourses.slice(0, 3).map((otherCourse) => (
                   <li
                     key={otherCourse.id}
                     className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all"
                   >
-                    <Link href={`/courses/${otherCourse.slug}`} className="flex items-center space-x-4">
+                    <Link href={`/kurslar/${otherCourse.slug}`} className="flex items-center space-x-4">
                       <span className="text-primaryBlue hover:text-accentOrange font-semibold">
                         {otherCourse.title}
                       </span>
                     </Link>
                   </li>
                 ))}
-                <li className='text-black'>sadasdsa</li>
-                <li className='text-black'>sadasdsa</li>
-                <li className='text-black'>sadasdsa</li>
-                <li className='text-black'>sadasdsa</li>
               </ul>
             </div>
           </div>
@@ -208,7 +204,7 @@ export default function CourseDetail({ course, otherCourses }) {
 export async function getStaticProps({ params }) {
   const course = await fetchCourseBySlug(params.slug); // Slug üzerinden kurs çek
   const allCourses = await fetchCourses(); // Tüm kursları çek
-  
+
   if (!course) {
     return { notFound: true }; // Eğer kurs yoksa 404
   }
@@ -216,7 +212,7 @@ export async function getStaticProps({ params }) {
   const otherCourses = allCourses
     .filter((c) => c.slug !== course.slug) // Mevcut kurs hariç diğer kursları seç
     .sort(() => 0.5 - Math.random())
-    .slice(0, 4); // İlk 4 diğer kursu seç
+    .slice(0, 3); // İlk 4 diğer kursu seç
 
   return {
     props: { course, otherCourses }, // Kurs ve diğer kursları sayfaya gönder
