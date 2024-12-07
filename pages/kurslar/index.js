@@ -63,7 +63,7 @@ export default function AllCourses({ courses }) {
                                     <Link href={`/kurslar/${course.slug}`}>
                                         <div className="relative w-full h-64 cursor-pointer">
                                             <Image
-                                                 src={`https://strapi-project-xi2f.onrender.com${course.image[0]?.url}`}
+                                                src={`https://strapi-project-xi2f.onrender.com${course.image[0]?.url}`}
                                                 alt={course.title}
                                                 layout="fill"
                                                 objectFit="cover"
@@ -117,8 +117,9 @@ export default function AllCourses({ courses }) {
 
 // getStaticProps ile Strapi'den veri çekiyoruz
 export async function getStaticProps() {
-    const res = await fetch(`${process.env.STRAPI_API_URL}/courses?populate=*`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/courses?populate=*`);
     const data = await res.json();
+
 
     return {
         props: {
