@@ -12,7 +12,7 @@ export default function SocialMedia() {
                     <a href="#" className="text-primaryBlue hover:text-accentOrange text-2xl">
                         <FaTwitter />
                     </a>
-                    <a href="#" className="text-primaryBlue hover:text-accentOrange text-2xl">
+                    <a href="https://www.instagram.com/mtk_akademi/" target="_blank" className="text-primaryBlue hover:text-accentOrange text-2xl">
                         <FaInstagram />
                     </a>
                     <a href="#" className="text-primaryBlue hover:text-accentOrange text-2xl">

@@ -45,9 +45,9 @@ export default function Footer() {
         <div>
           <h4 className="text-lg font-semibold mb-4">İletişim</h4>
           <ul className="space-y-2">
-            <li className="text-gray-400">Adres: İstanbul, Türkiye</li>
-            <li className="text-gray-400">Telefon: +90 555 555 5555</li>
-            <li className="text-gray-400">E-posta: info@mtkegitim.com</li>
+            <li className="text-gray-400">Adres: Çorum, Türkiye</li>
+            <li className="text-gray-400">Telefon: +90 546 896 97 83</li>
+            <li className="text-gray-400">E-posta: mtkakademi@gmail.com</li>
           </ul>
         </div>
 
@@ -56,23 +56,21 @@ export default function Footer() {
           <h4 className="text-lg font-semibold mb-4">Bizi Takip Edin</h4>
           <div className="flex space-x-4">
             <a
-              href="https://facebook.com"
-              target="_blank"
+              href="#"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-accentOrange transition"
             >
               <FaFacebookF className="text-xl" />
             </a>
             <a
-              href="https://twitter.com"
-              target="_blank"
+              href="#"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-accentOrange transition"
             >
               <FaTwitter className="text-xl" />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/mtk_akademi/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-accentOrange transition"
@@ -80,8 +78,7 @@ export default function Footer() {
               <FaInstagram className="text-xl" />
             </a>
             <a
-              href="https://linkedin.com"
-              target="_blank"
+              href="#"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-accentOrange transition"
             >

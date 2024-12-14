@@ -1,5 +1,6 @@
 // components/AboutSection.js
 import Image from 'next/image';
+import Link from 'next/link';
 import { FaStar } from 'react-icons/fa';
 
 export default function AboutSection() {
@@ -46,9 +47,9 @@ export default function AboutSection() {
 
           {/* Buton */}
           <div className="mt-6">
-            <a href="#" className="inline-block bg-accentOrange text-white py-3 px-6 rounded-full font-semibold hover:bg-primaryDark">
+            <Link href="/kurslar" className="inline-block bg-accentOrange text-white py-3 px-6 rounded-full font-semibold hover:bg-primaryDark">
             Kurslara Göz Atın
-            </a>
+            </Link>
           </div>
         </div>
       </div>
