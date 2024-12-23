@@ -66,7 +66,7 @@ export default function PaymentModal({ isOpen, onClose, course }) {
         >
           ✖
         </button>
-        <h2 className="text-2xl font-bold mb-4">Sipariş Bilgileri</h2>
+        <h2 className="text-2xl font-bold mb-4 text-gray-700">Sipariş Bilgileri</h2>
         <p className="text-gray-700 mb-4">
           <strong>{course?.title}</strong> kursunu satın almak üzeresiniz.
         </p>
@@ -77,7 +77,7 @@ export default function PaymentModal({ isOpen, onClose, course }) {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-3 py-2 border rounded-md"
+            className="w-full px-3 py-2 border rounded-md text-black"
           />
         </div>
         <div className="mb-4">
@@ -86,7 +86,7 @@ export default function PaymentModal({ isOpen, onClose, course }) {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-3 py-2 border rounded-md"
+            className="w-full px-3 py-2 border rounded-md text-black"
           />
         </div>
         <div className="mb-4">
@@ -95,7 +95,7 @@ export default function PaymentModal({ isOpen, onClose, course }) {
             type="text"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="w-full px-3 py-2 border rounded-md"
+            className="w-full px-3 py-2 border rounded-md text-black"
           />
         </div>
         <div className="mb-4">
@@ -104,7 +104,7 @@ export default function PaymentModal({ isOpen, onClose, course }) {
             type="text"
             value={tc}
             onChange={(e) => setTc(e.target.value)}
-            className="w-full px-3 py-2 border rounded-md"
+            className="w-full px-3 py-2 border rounded-md text-black"
           />
         </div>
         <div className="mb-4">
@@ -113,7 +113,7 @@ export default function PaymentModal({ isOpen, onClose, course }) {
             type="date"
             value={dob}
             onChange={(e) => setDob(e.target.value)}
-            className="w-full px-3 py-2 border rounded-md"
+            className="w-full px-3 py-2 border rounded-md text-black"
           />
         </div>
 
@@ -122,7 +122,7 @@ export default function PaymentModal({ isOpen, onClose, course }) {
         <button
           onClick={handlePayment}
           disabled={loading}
-          className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
+          className="w-full bg-accentOrange text-white py-2 px-4 rounded-md hover:bg-primaryDark"
         >
           {loading ? "İşlem Yapılıyor..." : "Siparişi Tamamla"}
         </button>

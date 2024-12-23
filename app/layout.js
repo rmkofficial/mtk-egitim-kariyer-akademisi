@@ -1,7 +1,7 @@
 // app/layout.js
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import WhatsAppButton from '../components/WhatsAppButton'; // WhatsApp Buton Bileşeni
+import WhatsAppButton from '../components/WhatsAppButton'; 
 import './globals.css';
 
 export const metadata = {
@@ -12,6 +12,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="tr">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body>
         <div className="flex flex-col min-h-screen">
           {/* Navbar */}
@@ -30,3 +33,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+

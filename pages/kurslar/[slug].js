@@ -122,7 +122,7 @@ export default function CourseDetail({ course, otherCourses }) {
                 onClick={() => setModalOpen(true)} // Modal'ı aç
                 className="bg-accentOrange text-white py-2 px-4 rounded-lg font-bold hover:bg-primaryDark transition-all w-full"
               >
-                Hemen Satın Al
+                Hemen Katıl
               </button>
             </div>
 
