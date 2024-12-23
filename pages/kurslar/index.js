@@ -46,7 +46,7 @@ export default function AllCourses({ courses }) {
                         <input
                             type="text"
                             placeholder="Kurs Ara..."
-                            className="w-full md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-accentOrange"
+                            className="w-full md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-accentOrange text-black"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                         />
