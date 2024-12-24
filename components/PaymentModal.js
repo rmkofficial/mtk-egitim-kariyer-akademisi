@@ -34,15 +34,15 @@ export default function PaymentModal({ isOpen, onClose, course }) {
         paymentId: "abc12345xyv" // Test için statik bir ödeme ID'si
       };
 
-      console.log("Gönderilen veri:", orderData);
+      // console.log("Gönderilen veri:", orderData);
 
       const response = await createOrder(orderData);
 
-      console.log("Sipariş oluşturuldu:", response);
+      // console.log("Sipariş oluşturuldu:", response);
       alert("Siparişiniz başarıyla alındı!");
       onClose();
     } catch (error) {
-      console.error("Sipariş oluşturulamadı:", error.response?.data || error.message);
+      // console.error("Sipariş oluşturulamadı:", error.response?.data || error.message);
       setError(error.response?.data?.error?.message || "Bir hata oluştu, lütfen tekrar deneyin.");
     } finally {
       setLoading(false);
