@@ -16,7 +16,6 @@ export default function PaymentModal({ isOpen, onClose, course, selectedPackage 
     setLoading(true);
     setError(null);
   
-    // Boş alanları kontrol et
     if (!name || !email || !phone || !tc || !dob) {
       setError("Lütfen tüm alanları doldurun.");
       setLoading(false);
@@ -30,28 +29,31 @@ export default function PaymentModal({ isOpen, onClose, course, selectedPackage 
         userPhone: phone,
         userTC: tc,
         userBirthDate: dob,
-        course: course.slug, // Kursun slug bilgisi
+        course: course.slug, // Kurs slug'ı
         package: {
-          id: selectedPackage?.id, // Seçilen paketin ID'si
-          title: selectedPackage?.title, // Seçilen paketin başlığı
-          price: selectedPackage?.price, // Seçilen paketin fiyatı
+          id: selectedPackage?.id, // Paket ID'si
+          title: selectedPackage?.title, // Paket başlığı
+          price: selectedPackage?.price, // Paket fiyatı
         },
-        paymentId: "abc12345xyv", // Test için statik bir ödeme ID'si
+        paymentId: "abc12345xyv", // Test için statik ödeme ID'si
       };
+      
+      // Gönderilen veriyi logla
+      console.log("Gönderilen Sipariş Verisi:", orderData);
+      
   
-      // Backend'e POST isteği
       const response = await createOrder(orderData);
   
-      // Sipariş başarılı olduğunda
       alert("Siparişiniz başarıyla alındı!");
       onClose();
     } catch (error) {
-      // Hata durumunda
+      console.error("API Hatası:", error.response?.data || error.message);
       setError(error.response?.data?.error?.message || "Bir hata oluştu, lütfen tekrar deneyin.");
     } finally {
       setLoading(false);
     }
   };
+  
   
 
   if (!isOpen) return null;
