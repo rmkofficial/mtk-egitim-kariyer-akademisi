@@ -14,15 +14,25 @@ import '@/app/globals.css';
 export default function CourseDetail({ course, otherCourses }) {
   const router = useRouter();
   const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState(null); // Seçilen paket
   const [isImageModalOpen, setImageModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const handleModalClose = () => setModalOpen(false);
+  const handleModalClose = () => {
+    setModalOpen(false);
+    setSelectedPackage(null); // Modal kapanırken seçilen paketi sıfırla
+  };
+
   const handleImageModalClose = () => setImageModalOpen(false);
 
   const openImageModal = (image) => {
     setSelectedImage(image);
     setImageModalOpen(true);
+  };
+
+  const handleSelectPackage = (pkg) => {
+    setSelectedPackage(pkg); // Seçilen paketi state'e yaz
+    setModalOpen(true); // Modal'i aç
   };
 
   // Eğer sayfa henüz slug almadıysa
@@ -112,18 +122,27 @@ export default function CourseDetail({ course, otherCourses }) {
             className="md:col-span-1 bg-slate-100 p-6 rounded-lg shadow-lg flex flex-col justify-between"
             style={{ maxHeight: '1000px' }}
           >
-            {/* Ücret */}
-            <div className="mb-2 bg-white p-4 rounded-lg shadow-lg">
-              <h2 className="text-xl font-bold text-primaryDark mb-2 flex items-center space-x-2">
-                <span>Kurs Ücreti</span>
+            {/* Paketler */}
+            <div className="mb-4 bg-white p-4 rounded-lg shadow-lg">
+              <h2 className="text-xl font-bold text-primaryDark mb-4 flex items-center space-x-2">
+                <span>Paketler</span>
               </h2>
-              <p className="text-2xl font-semibold text-accentOrange mb-4">{course.price} TL</p>
-              <button
-                onClick={() => setModalOpen(true)} // Modal'ı aç
-                className="bg-accentOrange text-white py-2 px-4 rounded-lg font-bold hover:bg-primaryDark transition-all w-full"
-              >
-                Hemen Katıl
-              </button>
+              {course.packages?.map((pkg) => (
+                <div
+                  key={pkg.id}
+                  className="mb-4 p-4 border border-gray-300 rounded-lg bg-gray-50"
+                >
+                  <h3 className="text-lg font-semibold text-primaryDark">{pkg.title}</h3>
+                  <p className="text-sm text-gray-600 mb-2">{pkg.description}</p>
+                  <p className="text-xl font-bold text-accentOrange">{pkg.price} TL</p>
+                  <button
+                    onClick={() => handleSelectPackage(pkg)} // Paketi seç ve modal'i aç
+                    className="mt-2 bg-accentOrange text-white py-1 px-4 rounded-lg font-bold hover:bg-primaryDark transition-all w-full"
+                  >
+                    Bu Paketi Seç
+                  </button>
+                </div>
+              ))}
             </div>
 
             {/* Sertifika Örnekleri */}
@@ -170,12 +189,15 @@ export default function CourseDetail({ course, otherCourses }) {
       </section>
       <Footer />
       <WhatsAppButton />
+
       {/* Payment Modal */}
       <PaymentModal
         isOpen={isModalOpen}
         onClose={handleModalClose}
         course={course}
+        selectedPackage={selectedPackage} // Seçilen paketi modal'e gönder
       />
+
       {/* Image Modal */}
       {isImageModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
@@ -199,7 +221,6 @@ export default function CourseDetail({ course, otherCourses }) {
     </>
   );
 }
-
 
 export async function getStaticProps({ params }) {
   const course = await fetchCourseBySlug(params.slug); // Slug üzerinden kurs çek
@@ -231,4 +252,3 @@ export async function getStaticPaths() {
     fallback: true, // Yollar bulunamazsa fallback modunu etkinleştir
   };
 }
-

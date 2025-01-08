@@ -1,64 +1,69 @@
 "use client";
 
 import { useState } from "react";
-import { createOrder } from "@/utils/api"; // API'den createOrder fonksiyonunu çağırıyoruz.
+import { createOrder } from "@/utils/api";
 
-export default function PaymentModal({ isOpen, onClose, course }) {
+export default function PaymentModal({ isOpen, onClose, course, selectedPackage }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [tc, setTc] = useState(""); // TC Kimlik No
-  const [dob, setDob] = useState(""); // Doğum Tarihi
+  const [tc, setTc] = useState("");
+  const [dob, setDob] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const handlePayment = async () => {
     setLoading(true);
     setError(null);
-
+  
     // Boş alanları kontrol et
     if (!name || !email || !phone || !tc || !dob) {
       setError("Lütfen tüm alanları doldurun.");
       setLoading(false);
       return;
     }
-
+  
     try {
       const orderData = {
-        userName: name,          // "userName" backend'in beklediği isim
-        userEmail: email,        // "userEmail" backend'in beklediği isim
-        userPhone: phone,        // "userPhone" backend'in beklediği isim
-        userTC: tc,              // "userTC" backend'in beklediği isim
-        userBirthDate: dob,      // "userBirthDate" backend'in beklediği isim
-        course: course.slug,     // Backend kurs slug'ı bekliyor
-        paymentId: "abc12345xyv" // Test için statik bir ödeme ID'si
+        userName: name,
+        userEmail: email,
+        userPhone: phone,
+        userTC: tc,
+        userBirthDate: dob,
+        course: course.slug, // Kursun slug bilgisi
+        package: {
+          id: selectedPackage?.id, // Seçilen paketin ID'si
+          title: selectedPackage?.title, // Seçilen paketin başlığı
+          price: selectedPackage?.price, // Seçilen paketin fiyatı
+        },
+        paymentId: "abc12345xyv", // Test için statik bir ödeme ID'si
       };
-
-      // console.log("Gönderilen veri:", orderData);
-
+  
+      // Backend'e POST isteği
       const response = await createOrder(orderData);
-
-      // console.log("Sipariş oluşturuldu:", response);
+  
+      // Sipariş başarılı olduğunda
       alert("Siparişiniz başarıyla alındı!");
       onClose();
     } catch (error) {
-      // console.error("Sipariş oluşturulamadı:", error.response?.data || error.message);
+      // Hata durumunda
       setError(error.response?.data?.error?.message || "Bir hata oluştu, lütfen tekrar deneyin.");
     } finally {
       setLoading(false);
     }
   };
+  
 
   if (!isOpen) return null;
 
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-      onClick={onClose} // Modal dışına tıklanınca kapatma
+      onClick={onClose}
     >
       <div
         className="bg-white rounded-lg p-6 shadow-lg max-w-md w-full relative"
-        onClick={(e) => e.stopPropagation()} // Modal içeriğine tıklamayı durdur
+        onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
@@ -68,7 +73,10 @@ export default function PaymentModal({ isOpen, onClose, course }) {
         </button>
         <h2 className="text-2xl font-bold mb-4 text-gray-700">Sipariş Bilgileri</h2>
         <p className="text-gray-700 mb-4">
-          <strong>{course?.title}</strong> kursunu satın almak üzeresiniz.
+          <strong>{course?.title}</strong> kursunun <strong>{selectedPackage?.title}</strong> paketini satın almak üzeresiniz.
+        </p>
+        <p className="text-gray-700 mb-4">
+          Paket Ücreti: <strong>{selectedPackage?.price} TL</strong>
         </p>
 
         <div className="mb-4">
