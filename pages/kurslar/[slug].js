@@ -120,7 +120,7 @@ export default function CourseDetail({ course, otherCourses }) {
           {/* Sağ: Sidebar */}
           <div
             className="md:col-span-1 bg-slate-100 p-6 rounded-lg shadow-lg flex flex-col justify-between"
-            style={{ maxHeight: '1000px' }}
+            style={{ maxHeight: '2000px' }}
           >
             {/* Paketler */}
             <div className="mb-4 bg-white p-4 rounded-lg shadow-lg">
